@@ -1,3 +1,4 @@
+this is how my docker file looks
 # Pexel Backend Dockerfile
 FROM python:3.11-slim
 
@@ -18,5 +19,8 @@ COPY . .
 # Create upload and output directories
 RUN mkdir -p uploads outputs
 
-# Run the application (Railway-safe)
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Expose port
+EXPOSE 8000
+
+# Run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
